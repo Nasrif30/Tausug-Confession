@@ -75,6 +75,12 @@ const adminRoutes = require('./src/routes/admin');
 const engagementRoutes = require('./src/routes/engagement');
 const moderatorRoutes = require('./src/routes/moderator');
 
+// Debug middleware to log all requests (placed BEFORE routes)
+app.use((req, res, next) => {
+  console.log(`🔍 ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 // Mount routes
 app.use('/api/auth', authRoutes);
 app.use('/api/confessions', confessionRoutes);
@@ -83,12 +89,6 @@ app.use('/api/comments', commentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/engagement', engagementRoutes);
 app.use('/api/moderator', moderatorRoutes);
-
-// Debug middleware to log all requests
-app.use((req, res, next) => {
-  console.log(`🔍 ${req.method} ${req.originalUrl}`);
-  next();
-});
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -114,6 +114,15 @@ app.get('/api/health', (req, res) => {
     message: 'Tausug Confession Platform API is running',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Test auth endpoint
+app.get('/api/auth/test', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Auth routes are working!',
+    timestamp: new Date().toISOString()
   });
 });
 
