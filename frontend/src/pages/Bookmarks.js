@@ -25,7 +25,7 @@ const Bookmarks = () => {
   const fetchBookmarks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/users/bookmarks', {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/users/bookmarks`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -61,7 +61,7 @@ const Bookmarks = () => {
 
   const removeBookmark = async (bookmarkId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/bookmarks/${bookmarkId}`, {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/users/bookmarks/${bookmarkId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

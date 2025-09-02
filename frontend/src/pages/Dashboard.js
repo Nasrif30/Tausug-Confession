@@ -63,7 +63,7 @@ const Dashboard = () => {
       setLoading(true);
       
       // Fetch real-time stats from API
-              const response = await fetch('http://localhost:5000/api/admin/stats', {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/admin/stats`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -106,7 +106,7 @@ const Dashboard = () => {
   const fetchUsers = async () => {
     try {
       setUsersLoading(true);
-              const response = await fetch('http://localhost:5000/api/admin/users', {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/admin/users`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

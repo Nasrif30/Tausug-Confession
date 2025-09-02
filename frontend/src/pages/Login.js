@@ -30,7 +30,7 @@ const Login = () => {
 
     try {
       // Try regular login first
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+              const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Login = () => {
 
       // If regular login fails, try admin login
       console.log('Regular login failed, trying admin login...');
-      const adminResponse = await fetch('http://localhost:5000/api/auth/admin/login', {
+              const adminResponse = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
