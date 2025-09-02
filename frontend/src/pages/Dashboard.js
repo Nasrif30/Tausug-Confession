@@ -62,8 +62,8 @@ const Dashboard = () => {
     try {
       setLoading(true);
       
-      // Fetch real-time stats from API
-              const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/stats`, {
+              // Fetch real-time stats from API
+        const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/stats`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -130,13 +130,13 @@ const Dashboard = () => {
 
       switch (action) {
         case 'ban':
-          endpoint = `/api/admin/users/${userId}/ban`;
+          endpoint = `${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/users/${userId}/ban`;
           break;
         case 'role':
-          endpoint = `/api/admin/users/${userId}/role`;
+          endpoint = `${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/users/${userId}/role`;
           break;
         case 'delete':
-          endpoint = `/api/admin/users/${userId}`;
+          endpoint = `${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/users/${userId}`;
           method = 'DELETE';
           break;
         default:
@@ -165,7 +165,7 @@ const Dashboard = () => {
 
   const handleReportAction = async (reportId, action) => {
     try {
-      const response = await fetch(`/api/admin/reports/${reportId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'https://tausug-confession.onrender.com'}/api/admin/reports/${reportId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
