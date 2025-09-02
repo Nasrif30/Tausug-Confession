@@ -126,6 +126,25 @@ app.get('/api/auth/test', (req, res) => {
   });
 });
 
+// Direct auth endpoints for testing
+app.post('/api/auth/register', (req, res) => {
+  console.log('🔐 Direct register endpoint hit');
+  res.json({
+    success: true,
+    message: 'Direct register endpoint working!',
+    body: req.body
+  });
+});
+
+app.post('/api/auth/login', (req, res) => {
+  console.log('🔐 Direct login endpoint hit');
+  res.json({
+    success: true,
+    message: 'Direct login endpoint working!',
+    body: req.body
+  });
+});
+
 // Database status endpoint
 app.get('/api/db-status', async (req, res) => {
   try {
