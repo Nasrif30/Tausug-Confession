@@ -84,6 +84,23 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/engagement', engagementRoutes);
 app.use('/api/moderator', moderatorRoutes);
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Tausug Confession Platform API is running',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      confessions: '/api/confessions',
+      users: '/api/users',
+      admin: '/api/admin'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({
