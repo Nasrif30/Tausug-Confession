@@ -84,6 +84,12 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/engagement', engagementRoutes);
 app.use('/api/moderator', moderatorRoutes);
 
+// Debug middleware to log all requests
+app.use((req, res, next) => {
+  console.log(`🔍 ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
