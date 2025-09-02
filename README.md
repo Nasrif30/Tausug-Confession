@@ -1,4 +1,4 @@
-# 🕌 Tausug Confession Platform
+#  Tausug Confession Platform
 
 A safe and secure platform for the Tausug community to share stories, confessions, and connect with others while maintaining privacy and cultural sensitivity.
 
